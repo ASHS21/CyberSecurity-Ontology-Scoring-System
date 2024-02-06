@@ -1,0 +1,9 @@
+id: csonto
+title: Cybersecurity Ontology
+github_org: ASHS21
+repo: final-year-project-ASHS21
+import_group:
+  products:
+    - id: ro
+    - id: bfo
+    - id: pato
