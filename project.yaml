@@ -1,0 +1,9 @@
+id: CSONTO
+title: Cybersecurity ontology
+github_org: ASHS21
+repo: CSONTO
+import_group:
+  products:
+    - id: ro
+    - id: bfo
+    - id: pato
