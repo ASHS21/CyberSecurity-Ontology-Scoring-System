@@ -192,6 +192,26 @@ class Neo4jConnection:
             MERGE (pl)-[:CONTAINS]->(p)
             """
         )
+            
+    def create_define_policy_relations_for_domains(self):
+        policy_labels = [
+        "Emerging_Technologies_Policies",
+        "Governance_Policies",
+        "Security_Operations_Policies",
+        "Assurance_Policies",
+        "Change_Management_Policies",
+        "Asset_Management_Policies"
+    ]
+    
+        with self.driver.session() as session:
+            for label in policy_labels:
+                session.run(
+                f"""
+                MATCH (g:Governance), (p:{label})
+                MERGE (g)-[:DEFINE_POLICY]->(p)
+                """
+            )
+
 
 
 def main():
@@ -213,7 +233,7 @@ def main():
     #conn.create_subnode_for_Threat_Management()
     #conn.create_vulnerability_and_patch_nodes()
     #conn.link_vulnerability_to_patch()
-
+    #conn.create_define_policy_relations_for_domains()
     # Close the connection when done
     conn.close()
     
