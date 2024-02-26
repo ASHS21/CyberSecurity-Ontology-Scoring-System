@@ -1,5 +1,6 @@
 import json
 from neo4j import GraphDatabase
+import pandas as pd
 
 class Neo4jConnection:
     def __init__(self, config_path):
@@ -211,9 +212,233 @@ class Neo4jConnection:
                 MERGE (g)-[:DEFINE_POLICY]->(p)
                 """
             )
+    def add_asset_management_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                session.write_transaction(self._create_and_link_subnode, row)
 
+    @staticmethod
+    def _create_and_link_subnode(tx, row):
+        query = (
+            "MERGE (parent:Asset_Management_Policies {name: 'Asset Management Policies'}) "
+            "MERGE (subnode:Policy {scf_id:$scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               scf_id=row['SCF #'], 
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting'])
 
+    def add_asset_management_subnodes_for_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                # Prepend "AST -" to the scf_id before passing it to the transaction function
+                modified_scf_id = f"AST - {row['SCF #']}"
+                session.execute_write(self._create_and_link_subnode, row, modified_scf_id)
 
+    @staticmethod
+    def _create_and_link_subnode(tx, row, modified_scf_id):
+        query = (
+            "MERGE (parent:Asset_Management_Policies {name: 'Asset Management Policies'}) "
+            "MERGE (subnode:Policy {scf_id: $modified_scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               modified_scf_id=modified_scf_id,
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting'])
+    
+    def add_governance_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                session.write_transaction(self._create_and_link_subnode, row)
+
+    @staticmethod
+    def _create_and_link_subnode(tx, row):
+        query = (
+            "MERGE (parent:Governance_Policies {name: 'Governance Policies'}) "
+            "MERGE (subnode:Policy {scf_id:$scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               scf_id=row['SCF #'], 
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting'])
+
+    def add_governance_subnodes_for_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                # Prepend "GOV -" to the scf_id before passing it to the transaction function
+                modified_scf_id = f"GOV - {row['SCF #']}"
+                session.execute_write(self._create_and_link_subnode, row, modified_scf_id)
+
+    @staticmethod
+    def _create_and_link_subnode(tx, row, modified_scf_id):
+        query = (
+            "MERGE (parent:Governance_Policies {name: 'Governance Policies'}) "
+            "MERGE (subnode:Policy {scf_id: $modified_scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               modified_scf_id=modified_scf_id,
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting'])
+        
+    def add_emergingTechnologies_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                session.write_transaction(self._create_and_link_subnode, row)
+
+    @staticmethod
+    def _create_and_link_subnode(tx, row):
+        query = (
+            "MERGE (parent:Emerging_Technologies_Policies {name: 'Emerging Technologies Policies'}) "
+            "MERGE (subnode:Policy {scf_id:$scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               scf_id=row['SCF #'], 
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting'])
+    
+    def add_emergingTechnologies_subnodes_for_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                # Prepend "AAT -" to the scf_id before passing it to the transaction function
+                modified_scf_id = f"AAT - {row['SCF #']}"
+                session.execute_write(self._create_and_link_subnode, row, modified_scf_id)
+
+    @staticmethod
+    def _create_and_link_subnode(tx, row, modified_scf_id):
+        query = (
+            "MERGE (parent:Emerging_Technologies_Policies {name: 'Emerging Technologies Policies'}) "
+            "MERGE (subnode:Policy {scf_id: $modified_scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               modified_scf_id=modified_scf_id,
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting'])
+    
+    def add_changeManagement_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                session.write_transaction(self._create_and_link_subnode, row)
+
+    @staticmethod
+    def _create_and_link_subnode(tx, row):
+        query = (
+            "MERGE (parent:Change_Management_Policies {name: 'Change Management Policies'}) "
+            "MERGE (subnode:Policy {scf_id:$scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               scf_id=row['SCF #'], 
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting']) 
+        
+    def add_changeManagement_subnodes_for_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                # Prepend "CHG -" to the scf_id before passing it to the transaction function
+                modified_scf_id = f"CHG - {row['SCF #']}"
+                session.execute_write(self._create_and_link_subnode, row, modified_scf_id)
+
+    @staticmethod
+    def _create_and_link_subnode(tx, row, modified_scf_id):
+        query = (
+            "MERGE (parent:Emerging_Technologies_Policies {name: 'Emerging Technologies Policies'}) "
+            "MERGE (subnode:Policy {scf_id: $modified_scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               modified_scf_id=modified_scf_id,
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting'])
+        
+    def add_assurance_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                session.write_transaction(self._create_and_link_subnode, row)
+    
+    @staticmethod
+    def _create_and_link_subnode(tx, row):
+        query = (
+            "MERGE (parent:Assurance_Policies {name: 'Assurance Policies'}) "
+            "MERGE (subnode:Policy {scf_id:$scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               scf_id=row['SCF #'], 
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting'])
+        
+    def add_assurance_subnodes_for_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                # Prepend "CHG -" to the scf_id before passing it to the transaction function
+                modified_scf_id = f"IAO - {row['SCF #']}"
+                session.execute_write(self._create_and_link_subnode, row, modified_scf_id)
+
+    @staticmethod
+    def _create_and_link_subnode(tx, row, modified_scf_id):
+        query = (
+            "MERGE (parent:Assurance_Policies {name: 'Assurance Policies'}) "
+            "MERGE (subnode:Policy {scf_id: $modified_scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               modified_scf_id=modified_scf_id,
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting']) 
+
+    def add_SecOps_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                session.write_transaction(self._create_and_link_subnode, row)
+    
+    @staticmethod
+    def _create_and_link_subnode(tx, row):
+        query = (
+            "MERGE (parent:Security_Operations_Policies {name: 'Security Operations Policies'}) "
+            "MERGE (subnode:Policy {scf_id:$scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               scf_id=row['SCF #'], 
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting'])
+
+    def add_secops_subnodes_for_subnodes(self, df):
+        with self.driver.session() as session:
+            for index, row in df.iterrows():
+                # Prepend "OPS -" to the scf_id before passing it to the transaction function
+                modified_scf_id = f"OPS - {row['SCF #']}"
+                session.execute_write(self._create_and_link_subnode, row, modified_scf_id)
+
+    @staticmethod
+    def _create_and_link_subnode(tx, row, modified_scf_id):
+        query = (
+            "MERGE (parent:Security_Operations_Policies {name: 'Security Operations Policies'}) "
+            "MERGE (subnode:Policy {scf_id: $modified_scf_id, name: $name, description: $description, strength: $strength}) "
+            "MERGE (subnode)-[:CONTRIBUTES_WEIGHT_TO]->(parent)"
+        )
+        tx.run(query, 
+               modified_scf_id=modified_scf_id,
+               name=row['SCF Control'], 
+               description=row['Secure Controls Framework (SCF)\nControl Description'], 
+               strength=row['Relative Control Weighting'])  
 def main():
     config_path = 'config.json'  
     
@@ -234,6 +459,26 @@ def main():
     #conn.create_vulnerability_and_patch_nodes()
     #conn.link_vulnerability_to_patch()
     #conn.create_define_policy_relations_for_domains()
+
+    excel_file_path = '/Users/alisami/Desktop/FYP/Resources/SCF-OneSheet.xlsx'
+    df = pd.read_excel(excel_file_path)
+    policies_df = df[df['SCF Domain'].str.contains('Vulnerability & Patch Management', na=False)]
+
+     # Add sub-nodes for all Policies nodes
+    #conn.add_asset_management_subnodes_for_subnodes(policies_df)
+    #conn.add_governance_subnodes(policies_df)
+    #conn.add_governance_subnodes_for_subnodes(policies_df)
+    #conn.add_emergingTechnologies_subnodes(policies_df)
+    #conn.add_emergingTechnologies_subnodes_for_subnodes(policies_df)
+    #conn.add_changeManagement_subnodes(policies_df)
+    #conn.add_changeManagement_subnodes_for_subnodes(policies_df)
+    #conn.add_assurance_subnodes(policies_df)
+    #conn.add_assurance_subnodes_for_subnodes(policies_df)
+    #conn.add_SecOps_subnodes(policies_df)
+    #conn.add_secops_subnodes_for_subnodes(policies_df)
+
+
+    print("Sub-nodes for Policies have been added.")
     # Close the connection when done
     conn.close()
     
