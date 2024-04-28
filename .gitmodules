@@ -1,4 +1,3 @@
 [submodule "csonto"]
-    path = csonto
-    url = https://github.com/ASHS21/csonto.git
-
+	path = csonto
+	url = https://github.com/ASHS21/csonto.git
