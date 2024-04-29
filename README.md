@@ -113,6 +113,10 @@ If you need to work with scripts related to the ontology, follow these steps:
 
 4. **Onto_Definitions & Updates Script:** Use this script for defining and updating instances within the ontology.
 
+## The ontology documentation 
+To find the full ontology documentation, follow this link: 
+[CyberSecurity Ontology Docs](https://cybersecurityontologydocs.netlify.app/)
+
 
 # 🌐 Knowledge Graph Guide
 
