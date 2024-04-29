@@ -83,7 +83,7 @@ python3 ML-LinkPredict.py
 
 # 📘 Ontology Guidance
 
-![OOPS Results](https://github.com/uol-feps-soc-comp3931-2324-classroom/final-year-project-ASHS21/assets/51306868/830095f5-9c2d-4d44-b6bd-ed0f26901f49)
+![OOPS Results](https://github.com/uol-feps-soc-comp3931-2324-classroom/final-year-project-ASHS21/assets/51306868/830095f5-9c2d-4d44-b6bd-ed0f26901f49) 
 
 Follow this guide to navigate through the various ontology files within the project repository.
 
@@ -116,6 +116,7 @@ If you need to work with scripts related to the ontology, follow these steps:
 ## The ontology documentation 
 To find the full ontology documentation, follow this link: 
 [CyberSecurity Ontology Docs](https://cybersecurityontologydocs.netlify.app/)
+Or, find the alternative docs : [Alternative Ontology Docs](https://cybersecurityontologydocs2.netlify.app/)
 
 
 # 🌐 Knowledge Graph Guide
