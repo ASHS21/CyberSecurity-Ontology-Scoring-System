@@ -21,6 +21,7 @@ extra_javascript:
   - https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js
 
 repo_url: https://github.com/uol-feps-soc-comp3931-2324-classroom/final-year-project-ASHS21
+repo_name: Final Year Project
 
 nav:
   - Home: index.md
