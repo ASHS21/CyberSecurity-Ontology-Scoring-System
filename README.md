@@ -83,6 +83,8 @@ python3 ML-LinkPredict.py
 
 # 📘 Ontology Guidance
 
+[![Free of pitfalls](images/conformance/oops_free.png)](http://oops.linkeddata.es)
+
 Follow this guide to navigate through the various ontology files within the project repository.
 
 ## 📂 Accessing Ontology Files
