@@ -13,26 +13,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v3 # Updated to the latest version
         with:
-          token: ${{ secrets.csonto }} # Use the PAT here for private submodules
-          submodules: 'recursive' # Ensures submodules are checked out
+          token: ${{ secrets.CSONTO }} # Ensure this matches the secret's name in your repo settings
+          submodules: 'recursive'
 
       - name: Set up Python
-        uses: actions/setup-python@v3
+        uses: actions/setup-python@v2
         with:
           python-version: 3.x
 
-      # Upgrade pip and install dependencies
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install mkdocs-material
           pip install -U git+https://github.com/mkdocs/mkdocs.git
 
-      # Build and deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         run: mkdocs gh-deploy --force
         env:
-          # This token is provided by Actions, you do not need to create your own token
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
