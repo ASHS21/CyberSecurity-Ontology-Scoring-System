@@ -1,4 +1,5 @@
 site_name: Cybersecurity Measuremnt tool (Cyber Eye)
+docs_dir: docs/
 theme:
   name: material
   icon:
