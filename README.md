@@ -104,13 +104,14 @@ If you need to work with scripts related to the ontology, follow these steps:
    ```bash
    cd csonto/target/csonto/src/scripts/
    ```
-
+```
 2. **StatusChecker Script:** This script is responsible for checking the status of various policies within the ontology.
 
 3. **OntologyBuilder Script:** This script aids in building and evolving the ontology throughout the development process.
 
 4. **Onto_Definitions & Updates Script:** Use this script for defining and updating instances within the ontology.
 ```
+
 # 🌐 Knowledge Graph Guide
 
 Welcome to the guide on accessing the Cybersecurity Knowledge Graph (CSKG) via the Neo4j Desktop. Follow these steps to navigate and execute queries within the Neo4j browser.
