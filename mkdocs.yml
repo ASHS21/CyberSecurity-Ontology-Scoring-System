@@ -1,0 +1,30 @@
+site_name: Cybersecurity Measuremnt tool (Cyber Eye)
+docs_dir: docs/
+theme:
+  name: material
+  icon:
+    edit: material/pencil 
+  features:
+    - content.action.edit
+
+markdown_extensions:
+  - toc:
+      permalink: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: python/name:pymdownx.superfences.fence_div_format
+          
+
+extra_javascript:
+  - https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js
+
+repo_url: https://github.com/uol-feps-soc-comp3931-2324-classroom/final-year-project-ASHS21
+repo_name: Final Year Project
+site_url: https://solid-adventure-ln7e9l6.pages.github.io/
+
+nav:
+  - Home: index.md
+  - Ontology Guidance: Ontology-guide.md
+  - Knowledge Graph Guidance: KG-Guide.md
