@@ -111,7 +111,6 @@ If you need to work with scripts related to the ontology, follow these steps:
 
 4. **Onto_Definitions & Updates Script:** Use this script for defining and updating instances within the ontology.
 ```
-
 # 🌐 Knowledge Graph Guide
 
 Welcome to the guide on accessing the Cybersecurity Knowledge Graph (CSKG) via the Neo4j Desktop. Follow these steps to navigate and execute queries within the Neo4j browser.
@@ -139,4 +138,4 @@ MATCH (n:CyberSecurityScore)<-[r:REPORTS_TO]-(m) RETURN n, r, m
 ```
 
 Utilize these queries to delve into different aspects of the CSKG, depending on your needs for analysis or data visualization.
-```
+
