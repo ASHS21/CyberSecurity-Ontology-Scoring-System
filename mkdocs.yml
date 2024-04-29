@@ -22,6 +22,7 @@ extra_javascript:
 
 repo_url: https://github.com/uol-feps-soc-comp3931-2324-classroom/final-year-project-ASHS21
 repo_name: Final Year Project
+site_url: https://solid-adventure-ln7e9l6.pages.github.io/
 
 nav:
   - Home: index.md
