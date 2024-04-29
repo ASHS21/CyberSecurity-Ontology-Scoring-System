@@ -83,7 +83,7 @@ python3 ML-LinkPredict.py
 
 # 📘 Ontology Guidance
 
-![OOPS Results](https://github.com/uol-feps-soc-comp3931-2324-classroom/final-year-project-ASHS21/OOPS Results.png) 
+![OOPS Results](https://github.com/uol-feps-soc-comp3931-2324-classroom/final-year-project-ASHS21/OOPS\Results.png) 
 
 Follow this guide to navigate through the various ontology files within the project repository.
 
