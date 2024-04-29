@@ -83,8 +83,7 @@ python3 ML-LinkPredict.py
 
 # 📘 Ontology Guidance
 
-[![Free of pitfalls](![OOPS Results](https://github.com/uol-feps-soc-comp3931-2324-classroom/final-year-project-ASHS21/assets/51306868/830095f5-9c2d-4d44-b6bd-ed0f26901f49)
-)](http://oops.linkeddata.es)
+(![OOPS Results](https://github.com/uol-feps-soc-comp3931-2324-classroom/final-year-project-ASHS21/assets/51306868/830095f5-9c2d-4d44-b6bd-ed0f26901f49)
 
 Follow this guide to navigate through the various ontology files within the project repository.
 
