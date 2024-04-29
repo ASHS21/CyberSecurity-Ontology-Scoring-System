@@ -104,13 +104,13 @@ If you need to work with scripts related to the ontology, follow these steps:
    ```bash
    cd csonto/target/csonto/src/scripts/
    ```
-```
+
 2. **StatusChecker Script:** This script is responsible for checking the status of various policies within the ontology.
 
 3. **OntologyBuilder Script:** This script aids in building and evolving the ontology throughout the development process.
 
 4. **Onto_Definitions & Updates Script:** Use this script for defining and updating instances within the ontology.
-```
+
 
 # 🌐 Knowledge Graph Guide
 
@@ -132,11 +132,11 @@ MATCH (n)<-[r:PART_OF]-(m) RETURN n, r, m
 
 ### 🔍 Focused Query for Core CSKG
 
-If you are interested in a more focused view of the core elements of the CSKG, use the query below. This query specifically retrieves nodes and relationships where nodes report directly to a `CyberSecurityScore`.
+If you are interested in a more focused view of the CSKG's core elements, use the query below. This query specifically retrieves nodes and relationships where nodes report directly to a `CyberSecurityScore`.
 
 ```cypher
 MATCH (n:CyberSecurityScore)<-[r:REPORTS_TO]-(m) RETURN n, r, m
 ```
 
-Utilize these queries to delve into different aspects of the CSKG, depending on your needs for analysis or data visualization.
+Depending on your needs for analysis or data visualization, you can utilize these queries to delve into different aspects of the CSKG.
 
